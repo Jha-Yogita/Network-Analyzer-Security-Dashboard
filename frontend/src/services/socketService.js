@@ -1,13 +1,15 @@
 import { io } from 'socket.io-client';
 
+const SOCKET_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 class SocketService {
   constructor() {
     this.socket = null;
   }
 
   connect(onPacketUpdate, onSecurityAlert, onError) {
-    this.socket = io('http://localhost:5000/network', {
-      transports: ['websocket'],
+    this.socket = io(`${SOCKET_URL}/network`, {
+      transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 5,
       reconnectionDelay: 1000,
