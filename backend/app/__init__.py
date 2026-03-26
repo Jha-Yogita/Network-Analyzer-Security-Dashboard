@@ -14,8 +14,8 @@ def create_app(config_name='default'):
     app.config.from_object(config[config_name])
     
     db.init_app(app)
-    CORS(app, resources={r"/api/*": {"origins": app.config['CORS_ORIGINS']}})
-    socketio.init_app(app, cors_allowed_origins="*", async_mode='gevent')
+    CORS(app, resources={r"/api/*": {"origins": "https://network-analyzer-security-dashboard.vercel.app"}})
+    socketio.init_app(app, cors_allowed_origins="https://network-analyzer-security-dashboard.vercel.app", async_mode='gevent')
     migrate.init_app(app, db)
     
     from app.routes import api_bp
