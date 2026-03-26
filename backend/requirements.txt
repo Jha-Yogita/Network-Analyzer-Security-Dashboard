@@ -7,3 +7,5 @@ scapy==2.5.0
 python-dotenv==1.0.0
 psycopg2-binary==2.9.9
 Flask-Migrate==4.0.5
+gunicorn==21.2.0
+eventlet==0.35.2
