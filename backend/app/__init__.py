@@ -15,7 +15,7 @@ def create_app(config_name='default'):
     
     db.init_app(app)
     CORS(app, resources={r"/api/*": {"origins": app.config['CORS_ORIGINS']}})
-    socketio.init_app(app, cors_allowed_origins="*", async_mode='eventlet')
+    socketio.init_app(app, cors_allowed_origins="*", async_mode='gevent')
     migrate.init_app(app, db)
     
     from app.routes import api_bp
